@@ -28,4 +28,9 @@ class Comision extends Model
         $this->attributes["nombre"] = strtoupper($nombre);
     }
 
+
+    public function carrera(){
+        return $this->belongsTo(Carrera::class,'carreras_id');
+    }
+
 }

@@ -6,14 +6,15 @@ use Illuminate\Http\Request;
 
 class CarrerasController extends Controller
 {
-    public function getDetalle(){
+
+    public function index(){
+        return view("carreras/index");
+    }
+
+    public function detalle(){
         return view("carreras/detalle");
     }
 
-    /*
-    public function getIndex(){
-
-    }
 
     public function show($id){
 
@@ -37,5 +38,5 @@ class CarrerasController extends Controller
 
     public function destroy($id){
 
-    }*/
+    }
 }
