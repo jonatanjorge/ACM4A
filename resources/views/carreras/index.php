@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-
-    <link rel="stylesheet" href="../css/app.css">
+    <base href="http://localhost/ACM4A/public/asd">
+    <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
     <div class="container">

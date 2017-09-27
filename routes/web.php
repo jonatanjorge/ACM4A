@@ -46,6 +46,12 @@ Route::get("/detalle",function(){
     return view("carreras/detalle");
 });
 
+Route::get("/talleres",function(){
+    $talleres = \App\Models\Taller::all();
+
+    return view("talleres/index", compact("talleres"));
+});
+
 
 //localhost/laravel/carreras/detalle -> get
 //carrerasController -> getDetalle
