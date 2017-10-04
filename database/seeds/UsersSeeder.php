@@ -19,7 +19,8 @@ class UsersSeeder extends Seeder
                 "apellido" => $faker->lastName,
                 "email" => $faker->email,
                 "password" => bcrypt("1234"),
-                "telefono" => $faker->phoneNumber
+                "telefono" => $faker->phoneNumber,
+                "sexo_id" => 1,
             ]);
         }
     }
