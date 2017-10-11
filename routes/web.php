@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 /*
 Route::get('/index/{id?}', function ($id = null) {
@@ -25,25 +25,18 @@ Route::get('/index/{id?}', function ($id = null) {
 
 /*
 */
-Route::get("/carreras/{id}",function($id){
+Route::group(["prefix" => "/carreras"], function(){
 
-    $carreras = \App\Models\Carrera::all();
+    Route::get("/",[
+        'as' => "carreras.index",
+        'uses' => "CarrerasController@index"
+    ]);
 
-    if($carreras)
-//        return view("carreras.index",["carreras" => $carreras]);
-//        return view("carreras.index")->with("carreras",$carreras);
-        return view("carreras.index",compact('carreras'));
+    Route::get("/{id}",[
+        'as' => 'carreras.detalle',
+        'uses' => 'CarrerasController@detalle'
+    ]);
 
-
-
-
-
-
-
-});
-
-Route::get("/detalle",function(){
-    return view("carreras/detalle");
 });
 
 Route::get("/talleres",function(){
