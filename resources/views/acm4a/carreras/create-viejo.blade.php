@@ -16,12 +16,12 @@
 
                 <div class="form-group">
                     <label>Nombre de carrera</label>
-                    <input type="text" name="nombre" placeholder="Diseño Gráfico" class="form-control">
+                    <input value="{{ old('nombre') }}" type="text" name="nombre" placeholder="Diseño Gráfico" class="form-control">
                 </div>
 
                 <div class="form-group">
                     <label>Alias de carrera</label>
-                    <input type="text" name="alias" placeholder="DG" class="form-control">
+                    <input value="{{ old('alias') }}" type="text" name="alias" placeholder="DG" class="form-control">
                 </div>
 
                 <div class="form-group">
@@ -30,7 +30,7 @@
                     style="width: 100%;">
                         @foreach($coordinadores as $coord)
 
-                            <option value="{{ $coord->id  }}">{{ $coord->full_name  }}</option>
+                            <option {{ $coord->id == old('coordinador') ? 'selected = "selected"' : ''  }} value="{{ $coord->id  }}">{{ $coord->full_name  }}</option>
 
                         @endforeach
                     </select>

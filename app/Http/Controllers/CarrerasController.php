@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carrera;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 
@@ -39,9 +40,18 @@ class CarrerasController extends Controller
 
     public function create(){
         //traer los coordinadores
-        $coordinadores = User::all();
+        $usuarios = User::all();
 
-        return view("acm4a.carreras.create",compact('coordinadores'));
+        $coordinadores = [];
+
+        foreach($usuarios as $coordinador):
+            $coordinadores[$coordinador->id] = $coordinador->fullname;
+        endforeach;
+        // listar directamente desde la tabla
+//        $coordinadores = User::pluck("fullname","id");
+
+
+        return view("acm4a.carreras.form",compact('coordinadores'));
     }
 
     public function store(Request $request){
@@ -86,16 +96,44 @@ class CarrerasController extends Controller
         if($carrera):
             return redirect()->route('carreras.index')->with('success',"La carrera se creo correctamente");
         else:
-            return redirect()->back()->withErrors();
+            return redirect()->back()->withErrors()->withInput();
         endif;
 
     }
 
     public function edit($id){
+        $usuarios = User::all();
 
+        $coordinadores = [];
+
+        foreach($usuarios as $coordinador):
+            $coordinadores[$coordinador->id] = $coordinador->fullname;
+        endforeach;
+
+        $carrera = Carrera::find($id);
+
+        return view("acm4a.carreras.form",compact('coordinadores','carrera'));
     }
 
-    public function update($id){
+    public function update($id,Request $request){
+        $rules = [
+            "nombre" => "required|string",
+            "alias" => "required|string|between:2,4",
+            "coordinador" => "required|exists:users,id"
+        ];
+
+        $this->validate($request,$rules);
+
+        // tomar los datos
+        $datos = $request->all();
+
+        $carrera = Carrera::find($id);
+
+        if($carrera->update($datos)):
+            return redirect()->route('carreras.index')->with("success","Se editó correctamente la carrera ".$carrera->nombre);
+        else:
+            return redirect()->back()->withErrors()->withInput();
+        endif;
 
     }
 

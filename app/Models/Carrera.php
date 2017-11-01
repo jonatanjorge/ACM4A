@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
-class Carrera extends Model
+class Carrera extends Entity
 {
 
     protected $table = "carreras";

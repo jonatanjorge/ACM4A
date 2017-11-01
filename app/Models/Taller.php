@@ -5,7 +5,7 @@ namespace App\Models;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
-class Taller extends Model
+class Taller extends Entity
 {
     protected $table = "talleres";
 

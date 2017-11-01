@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comision extends Model
+class Comision extends Entity
 {
     protected $table = "comisiones";
 
