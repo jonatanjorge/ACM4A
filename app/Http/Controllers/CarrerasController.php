@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCarrerasRequest;
 use App\Models\Carrera;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,11 +14,14 @@ class CarrerasController extends Controller
 
     public function __construct(Route $route)
     {
+        // el mas inseguro PARA MI
+        // $this->middleware("guest");
+
         $this->route = $route;
     }
 
-    public function index(){
-        $carreras = Carrera::all();
+    public function index(Carrera $carrera){
+        $carreras = $carrera->withTrashed()->get();
 
         if($carreras)
          return view("acm4a.carreras.index",compact('carreras'));
@@ -54,13 +58,14 @@ class CarrerasController extends Controller
         return view("acm4a.carreras.form",compact('coordinadores'));
     }
 
-    public function store(Request $request){
+    public function store(StoreCarrerasRequest $request){
 
-        $rules = [
-            "nombre" => "required|string",
-            "alias" => "required|string|between:2,4",
-            "coordinador" => "required|exists:users,id"
-        ];
+        /*
+         * Laravel inyecta en el objeto $request al usuario logueado que hizo esa petición
+         *
+        $usuario = Auth::user();
+        $usuario = $request->user();
+        */
 /*
         $messages = [
             "required" => "El campo :attribute es obligatorio",
@@ -71,8 +76,7 @@ class CarrerasController extends Controller
 */
 
         //acuerdense que los mensajes van como 3° parámetro
-        $this->validate($request,$rules);
-
+//        $this->validate($request,$rules);
 
         $datos = $request->all();
 
@@ -133,6 +137,23 @@ class CarrerasController extends Controller
             return redirect()->route('carreras.index')->with("success","Se editó correctamente la carrera ".$carrera->nombre);
         else:
             return redirect()->back()->withErrors()->withInput();
+        endif;
+
+    }
+
+    public function restore($id){
+        $carrera = Carrera::withTrashed()->find($id);
+
+
+        if($carrera):
+            if($carrera->restore($id)):
+                return redirect()->route("carreras.index")->with("success","Se restauró correctamente la carrera $carrera->nombre");
+            else:
+                return redirect()->back()->withErrors("No se pudo restaurar la carrera $carrera->nombre");
+            endif;
+
+        else:
+            return redirect()->back()->withErrors("No se encontró la carrera a restaurar");
         endif;
 
     }

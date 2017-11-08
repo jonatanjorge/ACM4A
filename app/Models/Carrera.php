@@ -4,16 +4,18 @@ namespace App\Models;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Carrera extends Entity
 {
+
+    use SoftDeletes;
 
     protected $table = "carreras";
 
     protected $fillable = ["nombre","alias","coordinador"];
 
     protected $primaryKey = "id";
-
 
     //public $timestamps = false;
 
@@ -32,6 +34,12 @@ class Carrera extends Entity
 
     public function comisiones(){
         return $this->hasMany(Comision::class,'carreras_id');
+    }
+
+    public function getIsDeletedAttribute(){
+
+        return !is_null($this->attributes["deleted_at"]);
+
     }
 
 

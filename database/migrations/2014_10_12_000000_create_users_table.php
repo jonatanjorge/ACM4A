@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->foreign('sexo_id')->references('id')->on('sexos');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

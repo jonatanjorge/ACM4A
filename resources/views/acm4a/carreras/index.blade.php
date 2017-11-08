@@ -35,9 +35,16 @@
                                     <a href="{{ route("carreras.edit",$carrera->id) }}" class="btn btn-success">
                                         <i class="fa fa-edit"></i>
                                     </a>
+
                                     <button class="btn btn-danger" type="submit">
                                         <i class="fa fa-trash"></i>
                                     </button>
+
+                                    @if($carrera->isDeleted)
+                                        <a href="{{ route("carreras.restore",$carrera->id) }}" class="btn btn-warning">
+                                            <i class="fa fa-undo"></i>
+                                        </a>
+                                    @endif
                                 </div>
 
                             </form>

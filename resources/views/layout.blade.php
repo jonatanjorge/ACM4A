@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@yield("title")</title>
 
+    <base href="{{asset('')}}">
     <!-- Incluir CSS -->
+    <link href="css/app.css" rel="stylesheet">
     @yield('css')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
