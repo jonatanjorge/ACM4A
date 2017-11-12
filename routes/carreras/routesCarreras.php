@@ -8,14 +8,6 @@ Route::group(["prefix" => "carreras","middleware" => "auth"],function(){
         "uses" => "CarrerasController@index",
     ]);
 
-
-//      Ruta con middleware creado por nosotros
-
-//    Route::get("/",["middleware" => "isAdmin:1"],[
-//        "as" => "carreras.index",
-//        "uses" => "CarrerasController@index",
-//    ]);
-
     //vista del formulario de alta
     Route::get("/create",[
         "as" => "carreras.create",

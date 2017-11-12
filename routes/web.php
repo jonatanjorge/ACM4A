@@ -6,7 +6,7 @@ Route::get('/', function () {
 });
 
 require_once( __DIR__ . '/carreras/routesCarreras.php');
-
+require_once(__DIR__ . '/materias/routesmaterias.php');
 
 //localhost/laravel/carreras/detalle -> get
 //carrerasController -> getDetalle
