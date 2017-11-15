@@ -1,6 +1,6 @@
 <?php
 
-Route::group(["prefix" => "carreras","middleware" => "auth"],function(){
+Route::group(["prefix" => "carreras"],function(){
 
     //index
     Route::get("/",[
