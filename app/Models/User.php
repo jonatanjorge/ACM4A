@@ -6,11 +6,12 @@ use App\Models\Carrera;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Artesaos\Defender\Traits\HasDefender;
 
 class User extends Authenticatable
 {
     use Notifiable;
-
+    use HasDefender;
     use SoftDeletes;
 
     /**

@@ -181,6 +181,9 @@ return [
 
 
         Collective\Html\HtmlServiceProvider::class,
+
+        // other providers ommited
+        \Artesaos\Defender\Providers\DefenderServiceProvider::class,
     ],
 
     /*
@@ -231,6 +234,8 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
+        'Defender' => \Artesaos\Defender\Facades\Defender::class,
     ],
 
 ];
