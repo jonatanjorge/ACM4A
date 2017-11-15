@@ -1,12 +1,20 @@
 <?php
 
-Route::group(["prefix" => "carreras"],function(){
+Route::group(["prefix" => "carreras","middleware" => "auth"],function(){
 
     //index
     Route::get("/",[
         "as" => "carreras.index",
-        "uses" => "CarrerasController@index"
+        "uses" => "CarrerasController@index",
     ]);
+
+
+//      Ruta con middleware creado por nosotros
+
+//    Route::get("/",["middleware" => "isAdmin:1"],[
+//        "as" => "carreras.index",
+//        "uses" => "CarrerasController@index",
+//    ]);
 
     //vista del formulario de alta
     Route::get("/create",[
@@ -35,6 +43,12 @@ Route::group(["prefix" => "carreras"],function(){
     Route::delete("/destroy/{id}",[
         "as" => "carreras.destroy",
         "uses" => "CarrerasController@destroy"
+    ]);
+
+//  Esto está mal porque el método tiene que ser un PUT en vez de un GET
+    Route::get("/restore/{id}",[
+        "as" => "carreras.restore",
+        "uses" => "CarrerasController@restore"
     ]);
 
 

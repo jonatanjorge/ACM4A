@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Carrera;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -10,13 +11,15 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    use SoftDeletes;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'nombre','apellido', 'email', 'password','telefono'
+        'nombre','apellido', 'email', 'password','telefono','sexo_id'
     ];
 
     protected $appends = ["full_name"];
