@@ -10,5 +10,4 @@ class Materia extends Entity
 
     protected $fillable = ["nombre","comisiones_id"];
 
-
 }
