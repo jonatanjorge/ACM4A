@@ -1,7 +1,7 @@
 @extends('template')
 
     @section('nombreSeccion')
-        Carreras <small>Listado</small>
+        Comisiones <small>Listado</small>
     @endsection
 
 
@@ -10,29 +10,32 @@
             <table class="table table-stripped">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>ID</th>
                         <th>Nombre</th>
-                        <th>Alias</th>
-                        <th>Coordinador</th>
-                        <th>Acciones</th>
+                        <th>Carrera</th>
+                        <th>Turno</th>
+                        <th>Cuatrimestre</th>
+                        <th>Division</th>
                     </tr>
                 </thead>
 
                 <tbody>
 
-                @foreach($carreras as $carrera)
+                @foreach($comisiones as $comision)
                     <tr>
-                        <td><?= $carrera->id ?></td>
-                        <td><?= $carrera->nombre ?></td>
-                        <td><?= $carrera->alias ?></td>
-                        <td><?= $carrera->coord->full_name ?></td>
+                        <td><?= $comision->id ?></td>
+                        <td><?= $comision->nombre ?></td>
+                        <td><?= $comision->carrera->nombre ?></td>
+                        <td><?= $comision->turno ?></td>
+                        <td><?= $comision->cuatrimestre ?></td>
+                        <td><?= $comision->division ?></td>
                         <td>
-                            <form action="{{ route("carreras.destroy",$carrera->id)  }}" method="post">
+                            <form action="{{ route("comisiones.destroy",$comision->id)  }}" method="post">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                 <div class="btn-group btn-group-xs">
-                                    <a href="" class="btn btn-success">
+                                    <a href="comisiones/edit/{{ $comision->id }}" class="btn btn-success">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <button class="btn btn-danger" type="submit">

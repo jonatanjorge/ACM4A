@@ -5,34 +5,62 @@
     @endsection
 
     @section('nombreSeccion')
-        Carreras <small>Nueva carrera</small>
+        Comisiones <small>Nueva Comisión</small>
     @endsection
 
 
     @section('content')
         <div class="col-xs-12">
-            <form action="{{route('carreras.store')}}" method="post">
+            <form action="{{route('comisiones.store')}}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token()  }}">
 
                 <div class="form-group">
-                    <label>Nombre de carrera</label>
-                    <input type="text" name="nombre" placeholder="Diseño Gráfico" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label>Alias de carrera</label>
-                    <input type="text" name="alias" placeholder="DG" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label>Coordinador a cargo</label>
-                    <select class="form-control select2" name="coordinador"
+                    <label>Carrera</label>
+                    <select class="form-control select2" name="carreras_id"
                     style="width: 100%;">
-                        @foreach($coordinadores as $coord)
+                        @foreach($carreras as $carrera)
 
-                            <option value="{{ $coord->id  }}">{{ $coord->full_name  }}</option>
+                            <option value="{{ $carrera->id }}">{{ $carrera->nombre }}</option>
 
                         @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Turno</label>
+                    <select class="form-control select2" name="turno"
+                            style="width: 100%;">
+
+                            <option value="mañana">Mañana</option>
+                            <option value="tarde">Tarde</option>
+                            <option value="noche">Noche</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Cuatrimestre</label>
+                    <select class="form-control select2" name="cuatrimestre"
+                            style="width: 100%;">
+                        @for($i = 1; $i < 7; $i++)
+
+                            <option value="{{ $i }}">{{ $i }}° Cuatrimestre</option>
+
+                        @endfor
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>División</label>
+                    <select class="form-control select2" name="division"
+                            style="width: 100%;">
+
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+
                     </select>
                 </div>
 
