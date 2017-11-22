@@ -69,4 +69,5 @@
   @include('partials.js')
   @yield('js')
 </body>
+
 </html>
