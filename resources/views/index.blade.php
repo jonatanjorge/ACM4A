@@ -7,4 +7,5 @@
 
     @section('content')
         <h1>Bienvenido a nuestro sistemita ACM4A</h1>
+
     @endsection

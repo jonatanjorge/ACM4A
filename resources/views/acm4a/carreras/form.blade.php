@@ -66,9 +66,7 @@
             {{ Form::close() }}
         </div>
 
-
     @endsection
-
 
     @section('js')
             <!-- Select2 -->

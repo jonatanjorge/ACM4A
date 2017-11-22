@@ -12,9 +12,7 @@ class MateriasController extends Controller
 
         if($materias)
             return view("acm4a.materias.index",compact('materias'));
-
     }
-
 
     public function show($id){
 
@@ -40,7 +38,7 @@ class MateriasController extends Controller
         $materia = Materia::find($id);
 
         if($materia)
-            return view('acm4a.materias.form',compact('materia'));
+            return view('acm4a.materias.form',compact('talleres'));
         else
             return redirect()->back()->withErrors()->withInput();
     }
@@ -60,7 +58,6 @@ class MateriasController extends Controller
             return redirect()->route('materias.index')->with('success','se editó correctamente la materia'.$materia->nombre);
         else
             return redirect()->back()->withErrors()->withInput();
-
     }
 
     public function restore($id){

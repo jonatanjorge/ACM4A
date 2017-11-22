@@ -8,7 +8,11 @@ Route::group(["middleware" => "auth"],function(){
     );
     require_once( __DIR__ . '/carreras/routesCarreras.php');
     require_once(__DIR__ . '/materias/routesmaterias.php');
+
     require_once(__DIR__ . '/comisiones/routescomisiones.php');
+
+    require_once(__DIR__ . '/talleres/routesTalleres.php');
+
 });
 
 Auth::routes();
