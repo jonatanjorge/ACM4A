@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -25,7 +27,10 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
+
+
+
 
     /**
      * Create a new controller instance.
@@ -35,5 +40,43 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    /*
+     *
+     * Si quiero generar mi propio login
+     */
+    /*
+    public function login(Request $request){
+
+        $datos = $request->all();
+
+        if(Auth::attemp(["email" => $datos["email"], "password" => $datos["password"]])){
+            // loguea al usuario...
+
+            //redireccionarlo al dashboard
+
+            return redirect()->route("carreras.index");
+        }else{
+
+            return redirect()->to('/login')->withErrors()->withInput();
+
+        }
+
+    }
+*/
+
+    /*
+     * Esto viaja por POST ahora
+    */
+    public function logout(Request $request){
+
+        $this->guard()->logout();
+
+        $request->session()->flush();
+
+        $request->session()->regenerate();
+
+        return redirect()->to('/login');
     }
 }

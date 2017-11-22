@@ -20,8 +20,12 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('telefono')->nullable();
+
+            $table->integer('sexo_id')->unsigned();
+            $table->foreign('sexo_id')->references('id')->on('sexos');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

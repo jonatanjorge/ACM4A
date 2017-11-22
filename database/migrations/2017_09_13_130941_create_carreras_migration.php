@@ -22,6 +22,8 @@ class CreateCarrerasMigration extends Migration
             $table->integer('coordinador')->unsigned();
 
             $table->foreign('coordinador')->references('id')->on('users');
+
+            $table->softDeletes();
         });
     }
 
