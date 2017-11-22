@@ -8,11 +8,9 @@ Route::group(["middleware" => "auth"],function(){
     );
     require_once( __DIR__ . '/carreras/routesCarreras.php');
     require_once(__DIR__ . '/materias/routesmaterias.php');
+    require_once(__DIR__ . '/comisiones/routescomisiones.php');
 });
 
-
-//localhost/laravel/carreras/detalle -> get
-//carrerasController -> getDetalle
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
