@@ -44,6 +44,26 @@
                     </li>
                 </ul>
             </li>
+            <li class="active treeview">
+                <a href="#">
+                    <i class="fa fa-mortar-board"></i>
+                    <span>Talleres</span>
+
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li>
+                        <a href="{{ route('talleres.index') }}"> Listado</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('talleres.create') }}"> Nuevo Taller</a>
+                    </li>
+                </ul>
+            </li>
+
 
         </ul>
     </section>
