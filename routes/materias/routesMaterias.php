@@ -1,6 +1,6 @@
 <?php
 
-Route::group(["prefix" => "materias","middleware" => "auth"],function(){
+Route::group(["prefix" => "materias"],function(){
     //index
     Route::get("/",[
         "as" => "materias.index",
