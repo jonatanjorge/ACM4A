@@ -38,7 +38,7 @@ class MateriasController extends Controller
         $materia = Materia::find($id);
 
         if($materia)
-            return view('acm4a.materias.form',compact('talleres'));
+            return view('acm4a.materias.form',compact('talleres','materia'));
         else
             return redirect()->back()->withErrors()->withInput();
     }

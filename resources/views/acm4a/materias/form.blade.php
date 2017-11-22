@@ -2,8 +2,8 @@
 
 @section('nombreSeccion')
     Materias <small>
-        @if(isset($carrera))
-            Editar {{ $carrera->nombre }}
+        @if(isset($materia))
+            Editar {{ $materia->nombre }}
         @else
             Nueva materia
         @endif
