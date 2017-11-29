@@ -21,6 +21,8 @@ class Carrera extends Entity
 
     //protected $guarded = ["id","created_at","updated_at"];
 
+    protected $visible = ["nombre","alias","coordinador","comisiones","coord"];
+
     public function coord(){
         //tabla users
         return $this->belongsTo(User::class,'coordinador');

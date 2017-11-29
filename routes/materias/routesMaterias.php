@@ -1,6 +1,6 @@
 <?php
 
-Route::group(["prefix" => "materias"],function(){
+Route::group(["prefix" => "materias","middleware" => "needsRole:alumno|profesor"],function(){
     //index
     Route::get("/",[
         "as" => "materias.index",

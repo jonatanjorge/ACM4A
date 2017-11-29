@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Functions\ApiFunction;
 use App\Http\Requests\StoreCarrerasRequest;
 use App\Models\Carrera;
 use App\Models\User;
@@ -172,4 +173,16 @@ class CarrerasController extends Controller
             return redirect()->back()->withErrors("No se encontró la carrera a eliminar");
         endif;
     }
+
+
+    public function getCarrerasApi(ApiFunction $apiFunction){
+
+        $url = env("URL_BASE")."carreras";
+
+        dd($apiFunction->call($url));
+    }
+
+
+
+
 }

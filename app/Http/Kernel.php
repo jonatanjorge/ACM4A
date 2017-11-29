@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\ApiMiddleware;
 use App\Http\Middleware\isAdmin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -36,6 +37,7 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             'bindings',
+            'apiMiddleware'
         ],
     ];
 
@@ -59,6 +61,9 @@ class Kernel extends HttpKernel
         'needsPermission' => \Artesaos\Defender\Middlewares\NeedsPermissionMiddleware::class,
 
         // Simpler access control, uses only the groups
-        'needsRole' => \Artesaos\Defender\Middlewares\NeedsRoleMiddleware::class
+        'needsRole' => \Artesaos\Defender\Middlewares\NeedsRoleMiddleware::class,
+
+        // Registro el Middleware para API
+        'apiMiddleware' => ApiMiddleware::class
     ];
 }

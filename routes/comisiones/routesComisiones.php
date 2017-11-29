@@ -11,7 +11,7 @@ Route::group(["prefix" => "comisiones"],function(){
     //vista del formulario de alta
     Route::get("/create",[
         "as" => "comisiones.create",
-        "uses" => "ComisionesController@create"
+        "uses" => "ComisionesController@create",
     ]);
 
     //action del formulario de alta
